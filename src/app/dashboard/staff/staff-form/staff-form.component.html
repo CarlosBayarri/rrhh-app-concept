@@ -1,0 +1,62 @@
+<div class="container flex-box h-75">
+    <div class="margin-auto col-sm-12 col-xs-12 col-md-6 col-lg-4 col-xl-4">
+      <form [formGroup]="employeeForm" (ngSubmit)="save()">
+
+        <mat-card>
+
+          <mat-card-header>
+            <div mat-card-avatar>
+              <mat-icon>person</mat-icon>
+            </div>
+            <mat-card-title>New employee</mat-card-title>
+            <mat-card-subtitle>Define the name, last name, age and department</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content class="flex-box flex-column">
+
+            <mat-form-field appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput type="text" placeholder="Write the name" formControlName="name">
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>last name</mat-label>
+                <input matInput type="text" placeholder="Write the last name" formControlName="last_name">
+            </mat-form-field>
+    
+            <mat-form-field appearance="fill">
+                <mat-label>Age</mat-label>
+                <input matInput type="number" placeholder="Write the age" formControlName="age">
+            </mat-form-field>
+    
+            <mat-form-field appearance="fill" *ngIf="departments.length > 0; else ngNoDepartmentsTemplate">
+                <mat-label>Department</mat-label>
+                <mat-select formControlName="department">
+                  <mat-option *ngFor="let department of departments" [value]="department.id">{{department.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <ng-template #ngNoDepartmentsTemplate>
+                <p class="text-center">There is no departments. Please, create a new one.</p>
+            </ng-template>
+
+          </mat-card-content>
+
+          <mat-card-actions class="flex-box flex-row">
+            <button mat-button [routerLink]="['/']" routerLinkActive="router-link-active" >Cancel</button>
+            <span class="spacer"></span>
+            
+            <button mat-button color="primary" type="submit" [disabled]="employeeForm.invalid">
+              <i class="fa fa-spin fa-sync" *ngIf="loading"></i>
+              <i class="fa fa-save" *ngIf="!loading"></i>
+              Add
+            </button>
+          </mat-card-actions>
+
+        </mat-card>
+        
+      </form>
+
+    </div>
+</div>
+          

@@ -1,0 +1,19 @@
+
+
+.auth-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+.auth-card {
+    position: relative;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+}

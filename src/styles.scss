@@ -1,1 +1,175 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #f2f2f2; }
+
+@import '@angular/material/theming';
+
+
+@include mat-core();
+
+$mat-white: (
+  50: #fcfcfc,
+  100: #fcfcfc,
+  200: #fcfcfc,
+  300: #fcfcfc,
+  400: #fcfcfc,
+  500: #fcfcfc,
+  600: #fcfcfc,
+  700: #fcfcfc,
+  800: #fcfcfc,
+  900: #fcfcfc,
+  A100: #fcfcfc,
+  A200: #fcfcfc,
+  A400: #fcfcfc,
+  A700: #fcfcfc,
+  contrast: (
+    50: #1a1a1a,
+    100: #1a1a1a,
+    200: #1a1a1a,
+    300: #1a1a1a,
+    400: #1a1a1a,
+    500: #1a1a1a,
+    600: #1a1a1a,
+    700: #1a1a1a,
+    800: #1a1a1a,
+    900: #1a1a1a,
+    A100: #1a1a1a,
+    A200: #1a1a1a,
+    A400: #1a1a1a,
+    A700: #1a1a1a,
+  )
+);
+
+$mat-grey: (
+  50: #f2f2f2,
+  100: #f2f2f2,
+  200: #f2f2f2,
+  300: #f2f2f2,
+  400: #f2f2f2,
+  500: #f2f2f2,
+  600: #f2f2f2,
+  700: #f2f2f2,
+  800: #f2f2f2,
+  900: #f2f2f2,
+  A100: #f2f2f2,
+  A200: #f2f2f2,
+  A400: #f2f2f2,
+  A700: #f2f2f2,
+  contrast: (
+    50: #fcfcfc,
+    100: #fcfcfc,
+    200: #fcfcfc,
+    300: #fcfcfc,
+    400: #fcfcfc,
+    500: #fcfcfc,
+    600: #fcfcfc,
+    700: #fcfcfc,
+    800: #fcfcfc,
+    900: #fcfcfc,
+    A100: #fcfcfc,
+    A200: #fcfcfc,
+    A400: #fcfcfc,
+    A700: #fcfcfc,
+  )
+);
+$mat-red: (
+  50: #ffebee,
+  100: #ffcdd2,
+  200: #ef9a9a,
+  300: #e57373,
+  400: #ef5350,
+  500: #f44336,
+  600: #e53935,
+  700: #d32f2f,
+  800: #c62828,
+  900: #b71c1c,
+  A100: #ff8a80,
+  A200: #ff5252,
+  A400: #ff1744,
+  A700: #d50000,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+/* ======== Angular material custom themes ======== */ 
+$my-custom-primary: mat-palette($mat-white);
+$my-custom-accent: mat-palette($mat-grey);
+$my-custom-warn: mat-palette($mat-red);
+
+$my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-custom-warn);
+
+@include angular-material-theme($my-custom-theme);
+
+
+
+
+.text-center {
+    text-align: center;
+    align-items: center;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+.pointer {
+  cursor: pointer;
+}
+.spacer {
+  flex: auto 1;
+}
+.flex-box {
+  display: flex !important;
+}
+.flex-column {
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
+.margin-auto {
+  margin: auto;
+}
+.w-25 {
+    width: 25% !important; }
+  
+  .w-50 {
+    width: 50% !important; }
+  
+  .w-75 {
+    width: 75% !important; }
+  
+  .w-100 {
+    width: 100% !important; }
+  
+  .w-auto {
+    width: auto !important; }
+  
+  .h-25 {
+    height: 25% !important; }
+  
+  .h-50 {
+    height: 50% !important; }
+  
+  .h-75 {
+    height: 75% !important; }
+  
+  .h-100 {
+    height: 100% !important; }
+  
+  .h-auto {
+    height: auto !important; }
+  
+
