@@ -5,6 +5,31 @@ This project is based on the concept of interaction of a company, its department
 
 The application reflects a CRUD under a very minimalist design with the sole purpose of reflecting said interaction. Material has been implemented for the design. The application should mainly show a list of departments and another of employees. For this purpose, from the main module, they have been divided into two modules, one for each one, which bring together three components: child, form and list.
 
+### App startup
+This application is in [GitHubPages](https://carlosbayarri.github.io/rrhh-app-concept/), [Firebase](https://rrhh-app-9601b.firebaseapp.com/) and docker. In the package.json there is some scripts to create and run the docker image: 
+- docker_build
+- run_docker_container
+
+## Development server
+
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Code scaffolding
+
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
 ### Development
 Want to contribute? Great!
 

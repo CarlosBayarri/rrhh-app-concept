@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DashboardRoutesModule } from './dashboard-routes.module';
 import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './home/home.component';
+import { StoreModule } from '@ngrx/store';
 
 
 
@@ -22,6 +23,7 @@ import { HomeComponent } from './home/home.component';
     ReactiveFormsModule,
     RouterModule,
     MaterialModule,
+    StoreModule,
     
     DepartmentsModule,
     StaffModule,

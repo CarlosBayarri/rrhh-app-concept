@@ -10,7 +10,8 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
+  /** Application title */
+  public title = 'rrhh-app-concept';
   /**
    * Constructor
    * @param AuthService 

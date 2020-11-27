@@ -6,6 +6,7 @@ import { StaffFormComponent } from './staff-form/staff-form.component';
 import { MaterialModule } from '../../material/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
 
 
 
@@ -16,7 +17,8 @@ import { RouterModule } from '@angular/router';
     MaterialModule,
     ReactiveFormsModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    StoreModule,
   ],
   exports: [StaffListComponent]
 })

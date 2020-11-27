@@ -18,6 +18,9 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { RouterModule } from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { DepartmentsService } from './services/departments.service';
+import { StaffService } from './services/staff.service';
 
 
 @NgModule({
@@ -43,7 +46,7 @@ import { RouterModule } from '@angular/router';
   declarations: [
     AppComponent
   ],
-  providers: [],
+  providers: [AuthService, DepartmentsService, StaffService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

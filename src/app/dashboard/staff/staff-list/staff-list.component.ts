@@ -68,7 +68,6 @@ export class StaffListComponent implements OnInit, OnDestroy {
           let date_1 = employee.date_discharge;
           date_1 = date_1.toDate();
           let date_2 = new Date(this.search_date);
-          console.log(date_1, date_2);
           if (date_1 >= date_2) {
             return true;
           } else {

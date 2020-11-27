@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from '../app.reducer';
 
 import { DashboardComponent } from './dashboard.component';
 
@@ -8,7 +10,8 @@ describe('DashboardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DashboardComponent ]
+      declarations: [ DashboardComponent ],
+      providers: [ StoreModule.forRoot(appReducers) ]
     })
     .compileComponents();
   });
