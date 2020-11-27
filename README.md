@@ -5,6 +5,10 @@ This project is based on the concept of interaction of a company, its department
 
 The application reflects a CRUD under a very minimalist design with the sole purpose of reflecting said interaction. Material has been implemented for the design. The application should mainly show a list of departments and another of employees. For this purpose, from the main module, they have been divided into two modules, one for each one, which bring together three components: child, form and list.
 
+The state of the application is managed with Redux. The user reduder allow us to manage the user information from Firebase. Also we have the departments and staf reducers.
+
+The prototype of this application is in this [PDF](https://github.com/CarlosBayarri/rrhh-app-concept/blob/master/BasicConcept.pdf).
+
 ### App startup
 This application is in [GitHubPages](https://carlosbayarri.github.io/rrhh-app-concept/), [Firebase](https://rrhh-app-9601b.firebaseapp.com/) and docker. In the package.json there is some scripts to create and run the docker image: 
 - docker_build

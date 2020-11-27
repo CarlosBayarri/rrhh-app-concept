@@ -1,0 +1,17 @@
+apiVersion: apps/rrhh-app-concept
+kind: Deployment
+metadata:
+  name: deployment-name
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        label-key : label-value  
+    spec:
+      containers:
+        - name: deploment-container-name
+          image: rrhhappcontainer
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
