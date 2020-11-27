@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "docs": "compodoc -p tsconfig.app.json src -s"
+    "docs": "compodoc -p tsconfig.json -s",
+    "untrack_environment": "git rm --cached -- ./src/environments/environment.ts",
+    "build_github": "ng build --prod --output-path docs --base-href https://carlosbayarri.github.io/rrhh-app-concept/"
   },
   "private": true,
   "dependencies": {

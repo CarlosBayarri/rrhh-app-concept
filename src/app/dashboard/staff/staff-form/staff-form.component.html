@@ -46,10 +46,10 @@
             <button mat-button [routerLink]="['/']" routerLinkActive="router-link-active" >Cancel</button>
             <span class="spacer"></span>
             
-            <button mat-button color="primary" type="submit" [disabled]="employeeForm.invalid">
-              <i class="fa fa-spin fa-sync" *ngIf="loading"></i>
-              <i class="fa fa-save" *ngIf="!loading"></i>
-              Add
+            <button mat-raised-button type="submit" [disabled]="employeeForm.invalid">
+              <span *ngIf="loading">Loading...</span>
+              <span *ngIf="id && !loading">Modify</span>
+              <span *ngIf="!id && !loading">Add</span>
             </button>
           </mat-card-actions>
 

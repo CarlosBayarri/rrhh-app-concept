@@ -1,5 +1,14 @@
+
+/**
+ * Department model
+ */
 export class Department {
 
-    constructor(public id: string, public name: string) {}
+    /**
+     * constructor
+     * @param name Name of the department
+     * @param id Id from firebase
+     */
+    constructor(public name: string, public id?: string) {}
     
 }

@@ -21,9 +21,9 @@
               <mat-error *ngIf="loginForm.get('password').invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
     
-            <button mat-stroked-button color="primary" type="submit" [disabled]="loginForm.invalid" *ngIf="!loading">Login</button>
+            <button mat-stroked-button type="submit" [disabled]="loginForm.invalid" *ngIf="!loading">Login</button>
 
-            <button mat-stroked-button color="primary" type="button" [disabled]="true" *ngIf="loading">Loading...</button>
+            <button mat-stroked-button type="button" [disabled]="true" *ngIf="loading">Loading...</button>
             <br>
             <span class="text-center">Do you want to have an account?</span>
             <br>

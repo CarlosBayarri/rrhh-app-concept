@@ -5,6 +5,7 @@ import { DepartmentsChildComponent } from './departments-child/departments-child
 import { DepartmentsFormComponent } from './departments-form/departments-form.component';
 import { MaterialModule } from '../../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [DepartmentsListComponent]
 })

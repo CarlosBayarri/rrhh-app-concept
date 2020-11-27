@@ -28,9 +28,9 @@
               <mat-error *ngIf="registrationForm.get('password').invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
     
-            <button mat-stroked-button color="primary" type="submit" [disabled]="registrationForm.invalid" *ngIf="!loading">Register</button>
+            <button mat-stroked-button type="submit" [disabled]="registrationForm.invalid" *ngIf="!loading">Register</button>
 
-            <button mat-stroked-button color="primary" type="button" [disabled]="true" *ngIf="loading">Loading...</button>
+            <button mat-stroked-button type="button" [disabled]="true" *ngIf="loading">Loading...</button>
             <br>
             <span class="text-center">Do you have an account?</span>
             <br>

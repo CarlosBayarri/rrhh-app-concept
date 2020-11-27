@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { 
     path: '',
-    canLoad: [ AuthGuard ],
+    canActivate: [ AuthGuard ],
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
   { path: '**', redirectTo: '' }

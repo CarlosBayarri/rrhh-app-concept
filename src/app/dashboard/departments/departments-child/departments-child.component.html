@@ -1,1 +1,9 @@
-<p>departments-child works!</p>
+<mat-list-item role="listitem">
+    <mat-icon>people</mat-icon> <span class="pl-05">{{department.name}}</span>
+    <span class="spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="editDepartment(department)"><mat-icon>edit</mat-icon>Edit</button>
+        <button mat-menu-item (click)="deleteDepartment(department)"><mat-icon>delete</mat-icon>Delete</button>
+    </mat-menu>
+</mat-list-item>

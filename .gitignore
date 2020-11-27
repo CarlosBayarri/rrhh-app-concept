@@ -2,8 +2,12 @@
 
 # compiled output
 /dist
+/docs
+/public
 /tmp
+/.firebase
 /out-tsc
+/documentation
 /src/environments/environment.ts
 /src/environments/environment.prod.ts
 # Only exists if Bazel was run
