@@ -1,41 +1,42 @@
-<mat-list role="list">
-    <div mat-subheader class="h-auto flex-box flex-column">
-        <div class="w-100 flex-box flex-row">
-            <span class="flex-box text-center">Staff</span>
-            <span class="spacer"></span>
-            <button mat-stroked-button (click)="addEmployee()">Create employee</button>
-        </div>
-        <div class="w-100 flex-box flex-row">
-            <mat-form-field class="w-100" *ngIf="filter === 'name'">
-                <mat-label>Search employee</mat-label>
-                <input matInput placeholder="John Doe" [(ngModel)]="search_name">
-            </mat-form-field>
-            <mat-form-field class="w-100" *ngIf="filter === 'department'">
-                <mat-label>Departments</mat-label>
-                <mat-select [(ngModel)]="search_department">
-                  <mat-option *ngFor="let department of departments" [value]="department.id">
-                    {{department.name}}
-                  </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field class="w-100" *ngIf="filter === 'date'">
-                <mat-label>Search by minimum date</mat-label>
-                <input matInput [matDatepicker]="picker" [(ngModel)]="search_date">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More filters"><mat-icon>filter_list</mat-icon></button>
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="filter = 'name'">Name</button>
-                <button mat-menu-item (click)="filter = 'department'">Department</button>
-                <button mat-menu-item (click)="filter = 'date'">Discharge date</button>                
-            </mat-menu>
-        </div>
-    </div>
-    <mat-list-item role="listitem" *ngIf="staff.length === 0">
-        No employee
-    </mat-list-item>
-    <div *ngFor="let employee of staff">
-        <app-staff-child [employee]="employee" *ngIf="filterStaff(employee)"></app-staff-child>
-    </div>
-</mat-list>
+
+        <mat-list role="list">
+            <div mat-subheader class="h-auto flex-box flex-column">
+                <div class="w-100 flex-box flex-row">
+                    <span class="flex-box text-center">Staff</span>
+                    <span class="spacer"></span>
+                    <button mat-stroked-button (click)="addEmployee()">Create employee</button>
+                </div>
+                <div class="w-100 flex-box flex-row">
+                    <mat-form-field class="w-100" *ngIf="filter === 'name'">
+                        <mat-label>Search employee</mat-label>
+                        <input matInput placeholder="John Doe" [(ngModel)]="search_name">
+                    </mat-form-field>
+                    <mat-form-field class="w-100" *ngIf="filter === 'department'">
+                        <mat-label>Departments</mat-label>
+                        <mat-select [(ngModel)]="search_department">
+                          <mat-option *ngFor="let department of departments" [value]="department.id">
+                            {{department.name}}
+                          </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="w-100" *ngIf="filter === 'date'">
+                        <mat-label>Search by minimum date</mat-label>
+                        <input matInput [matDatepicker]="picker" [(ngModel)]="search_date">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="More filters"><mat-icon>filter_list</mat-icon></button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="filter = 'name'">Name</button>
+                        <button mat-menu-item (click)="filter = 'department'">Department</button>
+                        <button mat-menu-item (click)="filter = 'date'">Discharge date</button>                
+                    </mat-menu>
+                </div>
+            </div>
+            <mat-list-item role="listitem" *ngIf="staff.length === 0">
+                No employee
+            </mat-list-item>
+            <div *ngFor="let employee of staff">
+                <app-staff-child [employee]="employee" *ngIf="filterStaff(employee)"></app-staff-child>
+            </div>
+        </mat-list>

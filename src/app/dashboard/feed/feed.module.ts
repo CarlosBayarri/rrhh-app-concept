@@ -6,11 +6,12 @@ import { RouterModule } from '@angular/router';
 import { FeedFormComponent } from './feed-form/feed-form.component';
 import { FeedChildComponent } from './feed-child/feed-child.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FeedBookmarksComponent } from './feed-bookmarks/feed-bookmarks.component';
 
 
 
 @NgModule({
-  declarations: [FeedMainComponent, FeedFormComponent, FeedChildComponent],
+  declarations: [FeedMainComponent, FeedFormComponent, FeedChildComponent, FeedBookmarksComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -18,7 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports: [
-    FeedMainComponent
+    FeedMainComponent, FeedChildComponent
   ]
 })
 export class FeedModule { }

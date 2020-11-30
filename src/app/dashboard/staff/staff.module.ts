@@ -7,11 +7,13 @@ import { MaterialModule } from '../../material/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
+import { StaffMainComponent } from './staff-main/staff-main.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 
 @NgModule({
-  declarations: [StaffListComponent, StaffChildComponent, StaffFormComponent],
+  declarations: [StaffListComponent, StaffChildComponent, StaffFormComponent, StaffMainComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -19,6 +21,7 @@ import { StoreModule } from '@ngrx/store';
     FormsModule,
     RouterModule,
     StoreModule,
+    SharedModule
   ],
   exports: [StaffListComponent]
 })

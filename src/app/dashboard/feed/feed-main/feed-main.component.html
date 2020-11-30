@@ -1,19 +1,31 @@
 
 
 <mat-card>
-    <button mat-stroked-button class="w-75 br-5" (click)="createNewPublication()"><mat-icon>edit</mat-icon>Create publication</button>
-    <button mat-button [matMenuTriggerFor]="menu" class="w-25"><mat-icon>filter_list</mat-icon>Order by: popular</button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item>News</button>
-        <button mat-menu-item>Popular</button>
-    </mat-menu>
+    <button mat-stroked-button class="w-100 br-5" (click)="createNewPublication()"><mat-icon>edit</mat-icon>Create publication</button>
 </mat-card>
 
-<div class="mtb-2 text-center" *ngIf="feed && feed.length === 0">
+<div class="flex-box flex-row">
+    <button class="mtb-1" mat-button [matMenuTriggerFor]="menu"><mat-icon class="mrl-1">filter_list</mat-icon>Order by {{sort_by}}</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="sortFeed('news')">News</button>
+        <button mat-menu-item (click)="sortFeed('popular')">Popular</button>
+    </mat-menu>
+    <span class="spacer"></span>
+    <button class="mtb-1" mat-button [matMenuTriggerFor]="menuDepartments"><mat-icon class="mrl-1">people</mat-icon>
+        <span *ngIf="filter_department">{{filter_department.name}}</span>
+        <span *ngIf="!filter_department">All</span>
+    </button>
+    <mat-menu #menuDepartments="matMenu">
+        <button mat-menu-item (click)="applyFilterDepartments(null)">All</button>
+        <button mat-menu-item *ngFor="let department of departments" (click)="applyFilterDepartments(department)">{{department?.name}}</button>
+    </mat-menu>
+</div>
+
+<div class="mtb-2 text-center" *ngIf="feed_aux && feed_aux.length === 0">
     <h3>There is no publications</h3>
     <div class="no-publication-image"></div>
 </div>
 
-<div class="mtb-1" *ngFor="let publication of feed">
+<div class="mtb-1" *ngFor="let publication of feed_aux">
     <app-feed-child [publication]="publication"></app-feed-child>
 </div>

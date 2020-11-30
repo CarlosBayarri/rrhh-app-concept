@@ -9,6 +9,7 @@ export class Publication {
  * @param info name of publication
  * @param likes likes of publication
  * @param employee ID of the employee
+ * @param department ID of the department
  * @param date date object automated when is created
  * @param id ID from firebase
  */
@@ -16,6 +17,7 @@ export class Publication {
         public info: string, 
         public likes: Like[], 
         public employee: string,
+        public department: string,
         public date: Date,
         public id?: string) {}
 }

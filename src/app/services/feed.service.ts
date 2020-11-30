@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
 import { User } from '../models/user.model';
+import { Like } from '../models/like.model';
 
 @Injectable({
   providedIn: 'root'
@@ -65,4 +66,21 @@ export class FeedService {
     return this.firestore.doc(`users/${user.uid}`).set(user);
   }
 
+  votePublication(like: Like, publication: Publication) {
+    const likes = publication.likes;
+    const publication2 = {...publication};
+    publication2.likes = [like, ...likes];
+    console.log(publication2);
+    return this.firestore.firestore.doc(`feed/${publication.id}`).set({...publication2});
+  }
+  unVotePublication(like: Like, publication: Publication) {
+    const publication2 = {...publication};
+    const index = publication2.likes.indexOf(like, 0);
+    if (index > -1) {
+      const likes = [...publication2.likes];
+      likes.splice(index, 1);
+      publication2.likes = [...likes];
+    }
+    return this.firestore.firestore.doc(`feed/${publication.id}`).set({...publication2});
+  }
 }

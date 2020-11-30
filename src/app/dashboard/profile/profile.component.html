@@ -1,1 +1,11 @@
-<p>profile works!</p>
+<div class="container pt-1 flex-box">
+    <div class="margin-auto col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <mat-card class="mtb-1" *ngIf="employee">
+            <mat-card-header [routerLink]="['/profile']" routerLinkActive="router-link-active">
+              <mat-card-title>{{employee.name}} {{employee.last_name}}</mat-card-title>
+              <mat-card-subtitle>{{department?.name}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="employee.image ? employee.image : 'assets/images/avatar.png'" [alt]="employee.name + ' ' + employee.last_name">
+        </mat-card>
+    </div>    
+</div>

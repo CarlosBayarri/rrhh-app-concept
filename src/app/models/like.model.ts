@@ -5,9 +5,9 @@ export class Like {
 /**
  * Constructor
  * @param tpe type of like
- * @param user ID of the user
+ * @param employee ID of the employee
  */
     constructor(        
         public type: string, 
-        public user: string) {}
+        public employee: string) {}
 }

@@ -6,6 +6,8 @@ import { DepartmentsFormComponent } from './departments/departments-form/departm
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DepartmentsMainComponent } from './departments/departments-main/departments-main.component';
+import { FeedBookmarksComponent } from './feed/feed-bookmarks/feed-bookmarks.component';
+import { StaffMainComponent } from './staff/staff-main/staff-main.component';
  
 const routes: Routes = [
   {
@@ -14,6 +16,8 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent},
       { path: 'profile', component: ProfileComponent},
+      { path: 'bookmarks', component: FeedBookmarksComponent},
+      { path: 'staff', component: StaffMainComponent},
       { path: 'departments', component: DepartmentsMainComponent},
       { path: 'new-employee', component: StaffFormComponent },
       { path: 'edit-employee/:id', component: StaffFormComponent },

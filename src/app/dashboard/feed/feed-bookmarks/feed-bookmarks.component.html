@@ -1,0 +1,20 @@
+
+<div class="container pt-1 flex-box">
+    <div class="margin-auto col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+
+        <mat-card>
+            <h3 class="card-subtitle">Bookmarks</h3>
+        </mat-card>
+
+
+        <div class="mtb-1" *ngFor="let publication of bookmarks">
+            <app-feed-child [publication]="publication"></app-feed-child>
+        </div>
+      
+        <mat-card class="mtb-2 text-center" *ngIf="bookmarks && bookmarks.length === 0">
+            <h3>Nothing bookmarked</h3>
+            <div class="no-publication-image"></div>
+        </mat-card>
+
+    </div>
+</div>

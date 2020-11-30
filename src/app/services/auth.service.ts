@@ -73,7 +73,7 @@ export class AuthService {
    */
   createUser(name: string, email: string, password: string) {
     return this.auth.createUserWithEmailAndPassword(email, password).then(fuser => {
-      const newUser = new User(fuser.user.uid, email, null, []);
+      const newUser = new User(fuser.user.uid, email, null, null, []);
       return this.firestore.doc(`users/${fuser.user.uid}`).set({...newUser}); // Firebase does not accept clases, only objects
     });
   }

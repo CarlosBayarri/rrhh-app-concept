@@ -13,7 +13,7 @@
             <ng-template #ngIsNotBookmarkedTemplate>
                 <button mat-menu-item (click)="unBookmarkPublication()"> <mat-icon>bookmark_border</mat-icon> Unbookmark </button>
             </ng-template>
-            <button mat-menu-item *ngIf="user.employee === publication.employee" (click)="deletePublication()"> <mat-icon>delete</mat-icon> Delete </button>
+            <button mat-menu-item *ngIf="user?.employee === publication.employee" (click)="deletePublication()"> <mat-icon>delete</mat-icon> Delete </button>
         </mat-menu>
 
     </mat-card-header>
@@ -26,9 +26,11 @@
 
     <mat-card-actions class="flex-box flex-row">
         <span class="spacer"></span>
-        <button mat-icon-button><mat-icon>thumb_down_alt</mat-icon></button>
-        <span class="mrl-1">{{publication?.likes.length}}</span>
-        <button mat-icon-button><mat-icon>thumb_up_alt</mat-icon></button>
+        <span class="mrl-1">{{publication?.likes?.length}}</span>
+        <button mat-icon-button (click)="voteUp()" *ngIf="!like_aux; else ngIsVotedTemplate"><mat-icon>thumb_up_alt</mat-icon></button>
+        <ng-template #ngIsVotedTemplate>
+            <button mat-icon-button (click)="unVotePublication()" class="blue"><mat-icon>thumb_up_alt</mat-icon></button>
+        </ng-template>
     </mat-card-actions>
 
 </mat-card>
