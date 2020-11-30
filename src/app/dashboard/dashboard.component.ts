@@ -6,6 +6,7 @@ import { AppState } from '../app.reducer';
 import { DepartmentsService } from '../services/departments.service';
 import { StaffService } from '../services/staff.service';
 import * as actions from '../store/actions';
+import { FeedService } from '../services/feed.service';
 /**
  * Dashboard component
  */
@@ -21,13 +22,16 @@ export class DashboardComponent implements OnInit, OnDestroy {
   private departmentsSubscription: Subscription;
   /** Staff subscription */
   private staffSubscription: Subscription;
+  /** Feed subscription */
+  private feedSubscription: Subscription;
   /**
    * Construction
    * @param store 
    * @param departmentsService 
    * @param staffService 
+   * @param feedService 
    */
-  constructor(private store: Store<AppState>, private departmentsService: DepartmentsService, private staffService: StaffService) { }
+  constructor(private store: Store<AppState>, private departmentsService: DepartmentsService, private staffService: StaffService, private feedService: FeedService) { }
   /** OnInit life cycle */
   ngOnInit(): void {
     this.userSubscription = this.store.select('user').pipe(filter((user0: any) => user0.user !== null)).subscribe(({user}) => {
@@ -37,6 +41,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       this.staffSubscription = this.staffService.initstaffListener().subscribe(staff => {
         this.store.dispatch(actions.setStaff({staff: staff}))
       });
+      this.feedSubscription = this.feedService.initFeedListener().subscribe(feed => {
+        this.store.dispatch(actions.setFeed({feed: feed}))
+      });
     })
   }
   /** OnDestroy life cycle */
@@ -44,6 +51,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.userSubscription?.unsubscribe();
     this.departmentsSubscription?.unsubscribe();
     this.staffSubscription?.unsubscribe();
+    this.feedSubscription?.unsubscribe();
   }
 
 }

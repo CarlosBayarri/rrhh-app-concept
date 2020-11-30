@@ -1,0 +1,11 @@
+
+
+<mat-card>
+    <button mat-stroked-button class="w-75" (click)="createNewPublication()"><mat-icon>edit</mat-icon>Create publication</button>
+    <button mat-button [matMenuTriggerFor]="menu" class="w-25"><mat-icon>filter_list</mat-icon>Order by: popular</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>News</button>
+        <button mat-menu-item>Popular</button>
+    </mat-menu>
+</mat-card>
+

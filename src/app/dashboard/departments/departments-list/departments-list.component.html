@@ -1,11 +1,15 @@
-<mat-list role="list">
-    <div mat-subheader class="flex-box">
-        Departments
-        <span class="spacer"></span>
-        <button mat-icon-button (click)="addDepartment()"><mat-icon>add</mat-icon></button>
-    </div>
-    <mat-list-item role="listitem" *ngIf="departments.length === 0">
-        No department
-    </mat-list-item>
-    <app-departments-child *ngFor="let department of departments" [department]="department"></app-departments-child>
-</mat-list>
+
+<mat-card class="mtb-1">
+    <mat-action-list role="list">
+        <div mat-subheader class="flex-box">
+            Departments
+        </div>
+        <mat-list-item role="listitem" *ngIf="departments.length === 0">
+            No department
+        </mat-list-item>
+        <app-departments-child *ngFor="let department of departments | slice:0:3" [department]="department"></app-departments-child>
+        <mat-list-item [routerLink]="['/departments']" routerLinkActive="router-link-active">
+            <span class="text-center w-100 pre-subtitle">View more</span>
+        </mat-list-item>
+    </mat-action-list>
+</mat-card>

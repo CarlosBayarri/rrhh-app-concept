@@ -7,14 +7,26 @@
   
       <span class="spacer"></span>
   
-      <img src="assets/images/avatar.png" alt="profile image" height="40" width="40" class="pointer br-50" [matMenuTriggerFor]="menu">
+      <button mat-button [routerLink]="['/']" routerLinkActive="router-link-active" class="mrl-1">
+        <div  class="flex-box flex-column text-center">
+          <mat-icon>home</mat-icon><span>Home</span>
+        </div>
+      </button>
+
+      <button mat-button [routerLink]="['/company']" routerLinkActive="router-link-active" class="mrl-1">
+        <div  class="flex-box flex-column text-center">
+          <mat-icon>people</mat-icon><span>My company</span>
+        </div>
+      </button>
+
+      <img [src]="user?.photoUrl ? user?.photoUrl : 'assets/images/avatar.png'" [alt]="user?.name" height="40" width="40" class="pointer br-50" [matMenuTriggerFor]="menu">
       
       <mat-menu #menu="matMenu">
         <div class="flex-box flex-column w-100 text-center p-2">
           <br>
-          <img src="assets/images/avatar.png" alt="profile image" height="40" width="40" class="pointer br-50">
+          <img [src]="user?.photoUrl ? user?.photoUrl : 'assets/images/avatar.png'" [alt]="user?.name" height="40" width="40" class="pointer br-50">
           <br>
-          <h3 class="text-capitalize">{{username}}</h3>
+          <h3 class="text-capitalize">{{user?.name}}</h3>
           <mat-action-list>
             <mat-list-item (click)="logOut()"> 
               <mat-icon matListIcon>exit_to_app</mat-icon>

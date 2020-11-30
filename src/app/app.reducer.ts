@@ -1,5 +1,6 @@
 import { ActionReducerMap } from '@ngrx/store';
 import * as reducers from './store/reducers';
+import { FeedState, feedReducer } from './store/reducers/feed.reducers';
 
 /**
  * Main state of the application
@@ -21,6 +22,10 @@ export interface AppState {
     * staff declaration
     */
    staff: reducers.StaffState,
+   /**
+    * staff declaration
+    */
+   feed: reducers.FeedState,
 }
 
 /**
@@ -31,4 +36,5 @@ export const appReducers: ActionReducerMap<AppState> = {
    user: reducers.authReducer,
    departments: reducers.departmentsReducer,
    staff: reducers.staffReducer,
+   feed: reducers.feedReducer,
 }

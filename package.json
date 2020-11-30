@@ -13,6 +13,7 @@
     "build_github": "ng build --prod --output-path docs --base-href https://carlosbayarri.github.io/rrhh-app-concept/",
     "docker_build": "docker build -t rrhhappcontainer .",
     "run_docker_container": "docker run --name rrhhappcontainer -d -p 8080:80 rrhhappcontainer",
+    "export_docker_container": "docker container export rrhhappcontainer -o rrhhappcontainer",
     "stop_container": "docker stop 23857dd26f1e",
     "remove_container": "docker conatiner rm 23857dd26f1e",
     "kubectl_apply": "kubectl apply -f RRHHAPP-deployment.yaml & kubectl apply -f RRHHAPP-service.yaml & kubectl apply -f RRHHAPP-load-balancer-service.yaml & kubectl get svc -owide & kubectl get svc"

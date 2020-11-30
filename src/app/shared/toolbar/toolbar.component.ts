@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { AppState } from 'src/app/app.reducer';
 import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user.model';
 
 /**
  * Toolbar component
@@ -17,9 +18,9 @@ import { AuthService } from '../../services/auth.service';
 export class ToolbarComponent implements OnInit {
 
   /**
-   * Username public variable
+   * User public variable
    */
-  username: string;
+  user: User;
   /**
    * User subscription
    */
@@ -46,7 +47,7 @@ export class ToolbarComponent implements OnInit {
    */
   ngOnInit() {
     this.userSubscription = this.store.select('user').pipe(filter(({user}) => user !== null)).subscribe(({user}) => {
-      this.username = user.name;
+      this.user = user;
     })
   }
   /**

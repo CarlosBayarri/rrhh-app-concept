@@ -4,19 +4,22 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { DepartmentsModule } from '../dashboard/departments/departments.module';
 
 
 
 @NgModule({
-  declarations: [ToolbarComponent],
+  declarations: [ToolbarComponent, SidebarComponent],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule,
     StoreModule,
+    DepartmentsModule
 
   ],
-  exports: [ToolbarComponent],
+  exports: [ToolbarComponent, SidebarComponent],
 
 })
 export class SharedModule { }

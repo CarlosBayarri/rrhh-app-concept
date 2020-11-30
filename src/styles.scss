@@ -143,6 +143,15 @@ $my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-cus
 .mb-05 {
   margin-bottom: 0.5rem;
 }
+.mrl-2 {
+  margin: auto 2rem auto 2rem !important;
+}
+.mrl-1 {
+  margin: auto 1rem auto 1rem !important;
+}
+.mtb-1 {
+  margin: 1rem auto 1rem auto !important;
+}
 .p-2 {
   padding: 2rem;
 }
@@ -190,4 +199,9 @@ $my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-cus
 .h-auto {
   height: auto !important; }
 
-
+.pre-subtitle {
+  color: rgba(0,0,0, 0.54);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+}
