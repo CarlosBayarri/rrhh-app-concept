@@ -5,7 +5,8 @@ import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { AppState } from 'src/app/app.reducer';
 import { AuthService } from '../../services/auth.service';
-import { User } from '../../models/user.model';
+import { Employee } from '../../models/employee.model';
+import { Department } from '../../models/department.model';
 
 /**
  * Toolbar component
@@ -18,14 +19,17 @@ import { User } from '../../models/user.model';
 export class ToolbarComponent implements OnInit {
 
   /**
-   * User public variable
+   * Employee public variable
    */
-  user: User;
+  employee: Employee;
   /**
-   * User subscription
+   * Staff subscription
    */
-  userSubscription: Subscription;
-
+  staffSubscription: Subscription;
+  /**
+   * Department public variable
+   */
+  department: Department;
   /**
    * Constructor of toolbar component
    * @param store
@@ -46,15 +50,27 @@ export class ToolbarComponent implements OnInit {
    * onInit lifecycle
    */
   ngOnInit() {
-    this.userSubscription = this.store.select('user').pipe(filter(({user}) => user !== null)).subscribe(({user}) => {
+    /*this.userSubscription = this.store.select('user').pipe(filter(({user}) => user !== null)).subscribe(({user}) => {
       this.user = user;
-    })
+    })*/
+    this.staffSubscription = this.store.subscribe(({staff, departments}) => {
+      staff.staff.map(employee => {
+        if (employee.id === this.AuthService.user.employee) {
+          this.employee = employee;
+          departments.departments.map(department => {
+            if (this.employee && department.id === this.employee.department) {
+              this.department = department;
+            }
+          })
+        }
+      })
+    });
   }
   /**
    * onDestroy life cycle
    */
   ngOnDestroy() {
-    this.userSubscription.unsubscribe();
+    this.staffSubscription.unsubscribe();
   }
 
 

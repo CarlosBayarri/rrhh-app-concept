@@ -8,18 +8,17 @@ export class User {
      * @param param0 Input params
      * @return USer objetc
      */
-    static fromFirebase({uid, name, email, photoUrl, displayName}) {
+    static fromFirebase({uid, email, employee, bookmarks}) {
 
-        return new User(uid,name, email, photoUrl, displayName);
+        return new User(uid, email, employee, bookmarks);
     }
     /**
      * Constructor
      * @param uid UID from firebase
-     * @param name username
      * @param email email
-     * @param photoURL User image
-     * @param displayName Username
+     * @param employee Employee ID
+     * @param bookmarks Save publications
      */
-    constructor( public uid: string, public name: string, public email: string, public photoUrl: string, public displayName: string) {}
+    constructor( public uid: string, public email: string, public employee: string, public bookmarks: string[]) {}
     
 }

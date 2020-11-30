@@ -71,7 +71,7 @@ export class StaffChildComponent implements OnInit {
     this.date_discharge = date.toDate();
     this.departmentsSubscription = this.store.select('departments').subscribe(({departments}) => 
         departments.map(department => { if (department.id === this.employee.department) {
-            this.department = department.name;
+            this.department = department;
         }})
       );
   }

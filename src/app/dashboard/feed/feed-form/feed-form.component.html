@@ -1,1 +1,16 @@
-<p>feed-form works!</p>
+<h1 mat-dialog-title>Create a publication</h1>
+
+<div mat-dialog-content>
+
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>What do you want to talk about?</mat-label>
+    <textarea matInput [formControl]="info"></textarea>
+  </mat-form-field>
+
+</div>
+
+<div mat-dialog-actions class="flex-box flex-row">
+  <button mat-button [mat-dialog-close]="null" tabindex="1">Cancel</button>
+  <span class="spacer"></span>
+  <button mat-button [mat-dialog-close]="info?.value" cdkFocusInitial [disabled]="!info?.valid" tabindex="-1">Publish</button>
+</div>

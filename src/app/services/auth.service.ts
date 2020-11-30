@@ -43,7 +43,6 @@ export class AuthService {
   initAuthListener() {
     this.auth.authState.subscribe(fuser => {
       if (fuser) {
-        console.log(fuser);
         this.userSubscription = this.firestore.doc(`users/${fuser.uid}`).valueChanges().subscribe((fuser2: any) => {
           const user = User.fromFirebase(fuser2);
           this._user = user;
@@ -74,7 +73,7 @@ export class AuthService {
    */
   createUser(name: string, email: string, password: string) {
     return this.auth.createUserWithEmailAndPassword(email, password).then(fuser => {
-      const newUser = new User(fuser.user.uid, name, email, null, null);
+      const newUser = new User(fuser.user.uid, email, null, []);
       return this.firestore.doc(`users/${fuser.user.uid}`).set({...newUser}); // Firebase does not accept clases, only objects
     });
   }

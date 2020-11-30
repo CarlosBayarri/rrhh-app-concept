@@ -1,7 +1,7 @@
 
 
 <mat-card>
-    <button mat-stroked-button class="w-75" (click)="createNewPublication()"><mat-icon>edit</mat-icon>Create publication</button>
+    <button mat-stroked-button class="w-75 br-5" (click)="createNewPublication()"><mat-icon>edit</mat-icon>Create publication</button>
     <button mat-button [matMenuTriggerFor]="menu" class="w-25"><mat-icon>filter_list</mat-icon>Order by: popular</button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item>News</button>
@@ -9,3 +9,11 @@
     </mat-menu>
 </mat-card>
 
+<div class="mtb-2 text-center" *ngIf="feed && feed.length === 0">
+    <h3>There is no publications</h3>
+    <div class="no-publication-image"></div>
+</div>
+
+<div class="mtb-1" *ngFor="let publication of feed">
+    <app-feed-child [publication]="publication"></app-feed-child>
+</div>

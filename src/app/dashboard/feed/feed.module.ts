@@ -5,6 +5,7 @@ import { MaterialModule } from 'src/app/material/material.module';
 import { RouterModule } from '@angular/router';
 import { FeedFormComponent } from './feed-form/feed-form.component';
 import { FeedChildComponent } from './feed-child/feed-child.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { FeedChildComponent } from './feed-child/feed-child.component';
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     FeedMainComponent

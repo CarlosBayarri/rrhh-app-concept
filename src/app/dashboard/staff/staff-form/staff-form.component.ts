@@ -53,7 +53,7 @@ export class StaffFormComponent implements OnInit, OnDestroy {
     let employee;
     this.store.dispatch(actions.isLoading());
     if (this.id) {
-      employee = new Employee(name, last_name, age, department, date_discharge, this.id);
+      employee = new Employee(name, last_name, age, department, date_discharge, null, null, this.id);
       this.staffService.modifyEmployee(employee).then(() => {
         Swal.fire('Employee modified', employee.name + ' ' + employee.last_name, 'success');
         this.store.dispatch(actions.stopLoading());
@@ -64,7 +64,7 @@ export class StaffFormComponent implements OnInit, OnDestroy {
         Swal.fire('Error', err, 'error');
       });
     } else {
-      employee = new Employee(name, last_name, age, department, date_discharge);
+      employee = new Employee(name, last_name, age, department, date_discharge, null, null);
       this.staffService.createEmployee(employee).then(() => {
         Swal.fire('Employee created', employee.name + ' ' + employee.last_name, 'success');
         this.store.dispatch(actions.stopLoading());

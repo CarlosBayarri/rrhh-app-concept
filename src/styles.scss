@@ -119,6 +119,10 @@ $my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-cus
     text-align: center;
     align-items: center;
 }
+.text-left {
+  text-align: left !important;
+  align-items: center;
+}
 .text-capitalize {
   text-transform: capitalize;
 }
@@ -152,6 +156,9 @@ $my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-cus
 .mtb-1 {
   margin: 1rem auto 1rem auto !important;
 }
+.mtb-2 {
+  margin: 2rem auto 2rem auto !important;
+}
 .p-2 {
   padding: 2rem;
 }
@@ -160,6 +167,9 @@ $my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-cus
 }
 .pl-05 {
   padding-left: 0.5rem;
+}
+.br-5 {
+  border-radius: 5rem !important;
 }
 .br-50 {
   border-radius: 50%;
@@ -204,4 +214,18 @@ $my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-cus
   font-family: Roboto, "Helvetica Neue", sans-serif;
   font-size: 14px;
   font-weight: 500;
+}
+
+.no-publication-image {
+  background-image: url('assets/images/undraw_social_interaction.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 250px;
+  max-width: 500px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }

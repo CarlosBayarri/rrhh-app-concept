@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { Publication } from '../models/publication.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,21 @@ export class FeedService {
    */
   deletePublication(id: string) {
     return this.firestore.doc(`feed/${id}`).delete();
+  }
+
+  bookmarkPublication(id: string, user: User) {
+    user.bookmarks = [id, ...user.bookmarks];
+    return this.firestore.doc(`users/${user.uid}`).set(user);
+  }
+
+  unbookmarkPublication(id: string, user: User) {
+    const index = user.bookmarks.indexOf(id, 0);
+    if (index > -1) {
+      const bookmarks = [...user.bookmarks];
+      bookmarks.splice(index, 1);
+      user.bookmarks = [...bookmarks];
+    }
+    return this.firestore.doc(`users/${user.uid}`).set(user);
   }
 
 }

@@ -19,14 +19,15 @@
         </div>
       </button>
 
-      <img [src]="user?.photoUrl ? user?.photoUrl : 'assets/images/avatar.png'" [alt]="user?.name" height="40" width="40" class="pointer br-50" [matMenuTriggerFor]="menu">
+      <img [src]="employee?.image ? employee?.image : 'assets/images/avatar.png'" [alt]="employee?.name + ' ' + employee?.last_name" height="40" width="40" class="pointer br-50" [matMenuTriggerFor]="menu">
       
       <mat-menu #menu="matMenu">
         <div class="flex-box flex-column w-100 text-center p-2">
           <br>
-          <img [src]="user?.photoUrl ? user?.photoUrl : 'assets/images/avatar.png'" [alt]="user?.name" height="40" width="40" class="pointer br-50">
+          <img [src]="employee?.image ? employee?.image : 'assets/images/avatar.png'" [alt]="employee?.name + ' ' + employee?.last_name" height="40" width="40" class="pointer br-50">
           <br>
-          <h3 class="text-capitalize">{{user?.name}}</h3>
+          <h3 class="text-capitalize">{{employee?.name}} {{employee?.last_name}}</h3>
+          <h4 class="text-capitalize">{{department?.name}}</h4>
           <mat-action-list>
             <mat-list-item (click)="logOut()"> 
               <mat-icon matListIcon>exit_to_app</mat-icon>
