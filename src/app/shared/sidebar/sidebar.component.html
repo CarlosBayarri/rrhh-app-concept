@@ -1,4 +1,4 @@
-<mat-card class="sidebar" *ngIf="employee">
+<mat-card class="sidebar" *ngIf="employee; else ngNoEmployeeProfileTemplate">
     <img mat-card-image [src]="employee.image ? employee.image : 'assets/images/avatar.png'" [alt]="employee.name + ' ' + employee.last_name">
     <mat-card-header [routerLink]="['/profile']" routerLinkActive="router-link-active">
       <mat-card-title>{{employee.name}} {{employee.last_name}}</mat-card-title>
@@ -11,5 +11,17 @@
       <button mat-button class="w-100" [routerLink]="['/bookmarks']" routerLinkActive="router-link-active" ><mat-icon>bookmarks</mat-icon>Bookmarks</button>
     </mat-card-actions>
 </mat-card>
+
+<ng-template #ngNoEmployeeProfileTemplate>
+  <mat-card class="sidebar">
+    <mat-card-header [routerLink]="['/new-employee']" routerLinkActive="router-link-active">
+      <mat-card-title>Welcome {{user?.name}}</mat-card-title>
+      <mat-card-subtitle>Create your employee profile</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
+      <button mat-button class="w-100" [routerLink]="['/new-employee']" routerLinkActive="router-link-active" ><mat-icon>accessibility</mat-icon> Access</button>
+    </mat-card-actions>
+  </mat-card>
+</ng-template>
 
 <app-departments-list></app-departments-list>

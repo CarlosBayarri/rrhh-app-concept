@@ -19,6 +19,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   private staffSubscription: Subscription;
     /** Department object */
     public department: Department;
+    /** User object */
+    public user: User;
   /**
    * Constructor
    * @param store Store
@@ -26,7 +28,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   constructor(private store: Store<AppState>, private authService: AuthService) { }
   /** On init life cycle */
   ngOnInit(): void {
-    this.staffSubscription = this.store.subscribe(({staff, departments}) => {
+    this.staffSubscription = this.store.subscribe(({user, staff, departments}) => {
+      this.user = user.user;
       staff.staff.map(employee => {
         if (employee.id === this.authService.user.employee) {
           this.employee = employee;

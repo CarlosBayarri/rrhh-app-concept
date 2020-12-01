@@ -8,7 +8,8 @@
             <div mat-card-avatar>
               <mat-icon>person</mat-icon>
             </div>
-            <mat-card-title>New employee</mat-card-title>
+            <mat-card-title *ngIf="!id">New employee</mat-card-title>
+            <mat-card-title *ngIf="id">Edit employee</mat-card-title>
             <mat-card-subtitle>Define the name, last name, age and department</mat-card-subtitle>
           </mat-card-header>
 

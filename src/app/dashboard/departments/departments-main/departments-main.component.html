@@ -12,7 +12,7 @@
                 <mat-list-item role="listitem" *ngIf="departments.length === 0">
                     No department
                 </mat-list-item>
-                <app-departments-child *ngFor="let department of departments | slice:0:2" [department]="department"></app-departments-child>
+                <app-departments-child *ngFor="let department of departments" [department]="department"></app-departments-child>
             </mat-action-list>
         </mat-card>
 

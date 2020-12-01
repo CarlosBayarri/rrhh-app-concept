@@ -2,6 +2,14 @@
 
 <div mat-dialog-content>
 
+  <mat-button-toggle-group class="w-100" [formControl]="type">
+    <mat-button-toggle class="w-20 button-icon-adapted" value="post" matTooltip="Post"><mat-icon>dynamic_feed</mat-icon> <span>Post</span></mat-button-toggle>
+    <mat-button-toggle class="w-20 button-icon-adapted" value="suggestion" matTooltip="Suggestion"><mat-icon>psychology</mat-icon> <span>Suggestion</span></mat-button-toggle>
+    <mat-button-toggle class="w-20 button-icon-adapted" value="alert" matTooltip="Alert"><mat-icon>notification_important</mat-icon> <span>Alert</span></mat-button-toggle>
+    <mat-button-toggle class="w-20 button-icon-adapted" value="idea" matTooltip="Idea"> <mat-icon>emoji_objects</mat-icon> <span>Idea</span></mat-button-toggle>
+    <mat-button-toggle class="w-20 button-icon-adapted" value="news" matTooltip="News"><mat-icon>fiber_new</mat-icon> <span>News</span></mat-button-toggle>
+  </mat-button-toggle-group>
+
   <mat-form-field appearance="outline" class="w-100">
     <mat-label>What do you want to talk about?</mat-label>
     <textarea matInput [formControl]="info"></textarea>
@@ -12,5 +20,5 @@
 <div mat-dialog-actions class="flex-box flex-row">
   <button mat-button [mat-dialog-close]="null" tabindex="1">Cancel</button>
   <span class="spacer"></span>
-  <button mat-button [mat-dialog-close]="info?.value" cdkFocusInitial [disabled]="!info?.valid" tabindex="-1">Publish</button>
+  <button mat-button [mat-dialog-close]="[{type: type?.value ,info: info?.value}]" cdkFocusInitial [disabled]="!info?.valid" tabindex="-1">Publish</button>
 </div>

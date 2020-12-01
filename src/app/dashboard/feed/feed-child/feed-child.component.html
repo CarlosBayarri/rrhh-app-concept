@@ -3,7 +3,7 @@
 
     <mat-card-header>
         <img mat-card-avatar [src]="employee?.image ? employee.image : 'assets/images/avatar.png'" [alt]="employee?.name" height="40" width="40" class="pointer br-50">
-        <mat-card-title>{{employee?.name}}</mat-card-title>
+        <mat-card-title [routerLink]="['/profile/', employee?.id]" routerLinkActive="router-link-active" >{{employee?.name}}</mat-card-title>
         <mat-card-subtitle>{{department?.name}}</mat-card-subtitle>
 
         <button mat-icon-button class="icon-corner" [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
@@ -25,6 +25,23 @@
     <mat-divider></mat-divider>
 
     <mat-card-actions class="flex-box flex-row">
+        <div [ngSwitch]="publication?.type">
+            <button mat-icon-button *ngSwitchDefault matTooltip="Post">
+                <mat-icon>dynamic_feed</mat-icon>
+            </button>
+            <button mat-icon-button *ngSwitchCase="'suggestion'" matTooltip="Suggestion">
+                <mat-icon>psychology</mat-icon>
+            </button>
+            <button mat-icon-button *ngSwitchCase="'alert'" matTooltip="Alert">
+                <mat-icon>notification_important</mat-icon>
+            </button>
+            <button mat-icon-button *ngSwitchCase="'idea'" matTooltip="Idea">
+                <mat-icon>emoji_objects</mat-icon>
+            </button>
+            <button mat-icon-button *ngSwitchCase="'news'" matTooltip="News">
+                <mat-icon>fiber_new</mat-icon>
+            </button>
+        </div>
         <span class="spacer"></span>
         <span class="mrl-1">{{publication?.likes?.length}}</span>
         <button mat-icon-button (click)="voteUp()" *ngIf="!like_aux; else ngIsVotedTemplate"><mat-icon>thumb_up_alt</mat-icon></button>

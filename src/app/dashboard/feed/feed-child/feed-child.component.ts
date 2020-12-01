@@ -63,7 +63,7 @@ export class FeedChildComponent implements OnInit {
     })
   }
   voteUp() {
-    const like: Like = {type: 'up', employee: this.employee.id};
+    const like: Like = {type: 'up', employee: this.user.employee};
     this.feedService.votePublication(like, this.publication).then(() => {
       Swal.fire('Publication voted', this.publication.info, 'success');
     }).catch(err => {
@@ -71,7 +71,7 @@ export class FeedChildComponent implements OnInit {
     })
   }
   voteDown() {
-    const like: Like = {type: 'down', employee: this.employee.id};
+    const like: Like = {type: 'down', employee: this.user.employee};
     this.feedService.votePublication(like, this.publication).then(() => {
       Swal.fire('Publication voted', this.publication.info, 'success');
     }).catch(err => {
@@ -102,7 +102,7 @@ export class FeedChildComponent implements OnInit {
             }
           })
           this.publication.likes.map(like => {
-            if (like.employee === this.employee.id) {
+            if (like.employee === this.user.employee) {
               this.like_aux = like;
             }
           })

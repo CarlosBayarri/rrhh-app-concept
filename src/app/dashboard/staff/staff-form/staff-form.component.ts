@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -9,6 +9,8 @@ import { Employee } from '../../../models/employee.model';
 import * as actions from '../../../store/actions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Department } from '../../../models/department.model';
+import { User } from 'src/app/models/user.model';
+import { AuthService } from '../../../services/auth.service';
 /**
  * Staff form component
  */
@@ -17,7 +19,7 @@ import { Department } from '../../../models/department.model';
   templateUrl: './staff-form.component.html',
   styleUrls: ['./staff-form.component.scss']
 })
-export class StaffFormComponent implements OnInit, OnDestroy {
+export class StaffFormComponent implements OnInit, OnDestroy, AfterViewInit {
   /** Id from employee */
   public id: string;
   /** Form group */
@@ -28,6 +30,10 @@ export class StaffFormComponent implements OnInit, OnDestroy {
   public loadingSubscription: Subscription;
   /** Departments subscription */
   public departmentsSubscription: Subscription;
+  /** User subscription */
+  public userSubscription: Subscription;
+  /** User object */
+  public user: User;
   /** Staff subscription */
   public staffSubscription: Subscription;
   /** Departments variable to manage all the departments */
@@ -42,7 +48,8 @@ export class StaffFormComponent implements OnInit, OnDestroy {
    * @param router 
    * @param route 
    */
-  constructor(private fb: FormBuilder, private staffService: StaffService, private store: Store<AppState>, private router: Router, private route: ActivatedRoute) { }
+  constructor(private fb: FormBuilder, private staffService: StaffService, private store: Store<AppState>, private router: Router,
+     private route: ActivatedRoute, private authService: AuthService) { }
   /**
    * Saves the employee data, creating a new one or modifying the existing one
    */
@@ -65,27 +72,42 @@ export class StaffFormComponent implements OnInit, OnDestroy {
       });
     } else {
       employee = new Employee(name, last_name, age, department, date_discharge, null, null);
-      this.staffService.createEmployee(employee).then(() => {
-        Swal.fire('Employee created', employee.name + ' ' + employee.last_name, 'success');
-        this.store.dispatch(actions.stopLoading());
-        this.employeeForm.reset();
-        this.router.navigate(['/']);
+      this.staffService.createEmployee(employee).then(response => {
+        employee = {id: response.id, ...employee};
+        this.authService.connectEmployeeProfile(employee).then(() => {
+          Swal.fire('Employee created', employee.name + ' ' + employee.last_name, 'success');
+          this.store.dispatch(actions.stopLoading());
+          this.employeeForm.reset();
+          this.router.navigate(['/']);
+        }).catch(err => {
+          console.error(err);
+          this.store.dispatch(actions.stopLoading());
+          Swal.fire('Error', JSON.stringify(err), 'error');
+        });
       }).catch(err => {
+        console.error(err);
         this.store.dispatch(actions.stopLoading());
-        Swal.fire('Error', err, 'error');
+        Swal.fire('Error', JSON.stringify(err), 'error');
       });
     }
   }
   /** OnInit life cycle */
   ngOnInit() {
-    this.loadingSubscription = this.store.select('ui').subscribe(({isLoading}) => this.loading = isLoading);
-    this.departmentsSubscription = this.store.select('departments').subscribe(({departments}) => this.departments = departments);
     this.employeeForm = this.fb.group({
       name: ['', Validators.required],
       last_name: ['', Validators.required],
       age: [null, Validators.required],
       department: ['', Validators.required]
-    })
+    })    
+  }
+  /** AfterViewInit life cycle */
+  ngAfterViewInit() {
+    this.loadingSubscription = this.store.select('ui').subscribe(({isLoading}) => this.loading = isLoading);
+    this.departmentsSubscription = this.store.select('departments').subscribe(({departments}) => this.departments = departments);
+    this.userSubscription = this.store.select('user').subscribe(({user}) => {
+      this.user = user;
+      if(this.user) this.employeeForm.setValue({name: this.user?.name, last_name: '', age: null, department: null});
+    });
     this.activeRoutingSubscription = this.route.params.subscribe(params => {
       this.id = params['id']; 
       this.staffSubscription = this.store.select('staff').subscribe(({staff}) => 
@@ -99,6 +121,7 @@ export class StaffFormComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.loadingSubscription.unsubscribe();
     this.departmentsSubscription.unsubscribe();
+    this.userSubscription.unsubscribe();
     this.activeRoutingSubscription.unsubscribe();
     this.staffSubscription.unsubscribe();
   }

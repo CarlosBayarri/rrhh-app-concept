@@ -69,13 +69,13 @@ export class FeedMainComponent implements OnInit, OnDestroy {
    
   }
   createNewPublication() {
-    let dialogRef = this.dialog.open(FeedFormComponent, {
-      width: '550px',
-    });
+    let dialogRef = this.dialog.open(FeedFormComponent);
     this.store.dispatch(actions.isLoading());
-    dialogRef.afterClosed().toPromise().then(info => {
-      if (info) {
-        const publication = new Publication(info, [], this.user.employee, this.user.department, new Date(), null);
+    dialogRef.afterClosed().toPromise().then(publication0 => {
+      if (publication0 && publication0[0]) {
+        const info = publication0[0]['info'];
+        const type = publication0[0]['type'];
+        const publication = new Publication(type, info, [], this.user.employee, this.user.department, new Date(), null);
         this.feedService.createPublication(publication).then(() => {
           this.store.dispatch(actions.stopLoading());
           Swal.fire('Published', info, 'success');

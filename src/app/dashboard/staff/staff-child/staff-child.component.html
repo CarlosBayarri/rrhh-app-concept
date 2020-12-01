@@ -12,7 +12,7 @@
     <mat-card-header>
         <div mat-card-avatar><mat-icon>person</mat-icon></div>
         <mat-card-title>{{name}} {{last_name}} ({{age}})</mat-card-title>
-        <mat-card-subtitle>{{department}} - since {{date_discharge | date}}</mat-card-subtitle>
+        <mat-card-subtitle>{{department.name}} - since {{date_discharge | date}}</mat-card-subtitle>
     </mat-card-header>
 
     <button mat-icon-button class="icon-corner" [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>

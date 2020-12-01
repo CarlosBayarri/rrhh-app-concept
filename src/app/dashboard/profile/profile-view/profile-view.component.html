@@ -1,0 +1,23 @@
+<mat-card class="mtb-1" *ngIf="employee">
+    <mat-card-header>
+      <mat-card-title>{{employee.name}} {{employee.last_name}}</mat-card-title>
+      <mat-card-subtitle>{{department?.name}}</mat-card-subtitle>
+      <button class="icon-corner" mat-icon-button [routerLink]="['/edit-employee', employee?.id]" routerLinkActive="router-link-active" *ngIf="editable"><mat-icon>edit</mat-icon></button>
+    </mat-card-header>
+    <img mat-card-image [src]="employee.image ? employee.image : 'assets/images/avatar.png'" [alt]="employee.name + ' ' + employee.last_name">
+    <mat-card-content>
+        <mat-list>
+            <div mat-subheader>Information</div>
+            <mat-list-item>
+              <mat-icon mat-list-icon>cake</mat-icon> <div mat-line>{{employee?.age}} years old</div>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon mat-list-icon>calendar_today</mat-icon> <div mat-line> Since {{employee?.date_discharge | date}}</div>
+            </mat-list-item>
+            <div mat-subheader>Department</div>
+            <mat-list-item>
+              <mat-icon mat-list-icon>people</mat-icon> <div mat-line>{{department?.name}}</div>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

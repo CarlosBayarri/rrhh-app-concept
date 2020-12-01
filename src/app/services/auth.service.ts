@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { AppState } from '../app.reducer';
 import { User } from '../models/user.model';
 import * as actions from '../store/actions';
+import { Employee } from '../models/employee.model';
 
 /**
  * Authentication service
@@ -73,7 +74,7 @@ export class AuthService {
    */
   createUser(name: string, email: string, password: string) {
     return this.auth.createUserWithEmailAndPassword(email, password).then(fuser => {
-      const newUser = new User(fuser.user.uid, email, null, null, []);
+      const newUser = new User(fuser.user.uid, name, email, null, null, []);
       return this.firestore.doc(`users/${fuser.user.uid}`).set({...newUser}); // Firebase does not accept clases, only objects
     });
   }
@@ -90,6 +91,15 @@ export class AuthService {
     return this.auth.authState.pipe(
       map(fuse => fuse != null)
     );
+  }
+  /**
+   * Connect employee profile to user
+   */
+  connectEmployeeProfile(employee: Employee) {
+    const user = {...this.user};
+    user.employee = employee.id;
+    user.department = employee.department;
+    return this.firestore.doc(`users/${this.user.uid}`).set({...user});
   }
 
 }

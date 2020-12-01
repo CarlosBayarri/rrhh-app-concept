@@ -10,15 +10,14 @@ import { DashboardRoutesModule } from './dashboard-routes.module';
 import { DashboardComponent } from './dashboard.component';
 import { HomeComponent } from './home/home.component';
 import { StoreModule } from '@ngrx/store';
-import { ProfileComponent } from './profile/profile.component';
 import { FeedModule } from './feed/feed.module';
+import { ProfileModule } from './profile/profile.module';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    HomeComponent,
-    ProfileComponent
+    HomeComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +30,8 @@ import { FeedModule } from './feed/feed.module';
     StaffModule,
     SharedModule,
     FeedModule,
-    DashboardRoutesModule
+    DashboardRoutesModule,
+    ProfileModule
   ]
 })
 export class DashboardModule { }
