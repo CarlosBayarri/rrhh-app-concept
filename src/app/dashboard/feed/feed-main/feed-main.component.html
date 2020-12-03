@@ -26,6 +26,6 @@
     <div class="no-publication-image"></div>
 </div>
 
-<div class="mtb-1" *ngFor="let publication of feed_aux">
+<div class="mtb-1" *ngFor="let publication of feed_aux | isANew:'feed'">
     <app-feed-child [publication]="publication"></app-feed-child>
 </div>

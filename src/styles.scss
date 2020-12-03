@@ -1,8 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #f2f2f2; }
-
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #f2f2f2; padding-top: 64px; }
 @import '@angular/material/theming';
 
 
@@ -143,6 +142,13 @@ $my-custom-theme: mat-light-theme($my-custom-primary, $my-custom-accent, $my-cus
 }
 .margin-auto {
   margin: auto;
+}
+.fixed-top {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030; 
 }
 .mb-05 {
   margin-bottom: 0.5rem;

@@ -17,10 +17,10 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { RouterModule } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { DepartmentsService } from './services/departments.service';
 import { StaffService } from './services/staff.service';
+import { FixDatePipe } from './pipes/fix-date.pipe';
 
 
 @NgModule({
@@ -44,7 +44,7 @@ import { StaffService } from './services/staff.service';
 
   ],
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   providers: [AuthService, DepartmentsService, StaffService],
   bootstrap: [AppComponent]

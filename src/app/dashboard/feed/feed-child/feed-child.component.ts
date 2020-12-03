@@ -86,12 +86,10 @@ export class FeedChildComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-  
     this.staffSubscription = this.store.subscribe(({staff, user, departments, feed}) => {
       if (typeof this.publication === 'string') {
         feed.feed.map((publication: any) => { if(publication.id === this.publication) { this.publication = publication } });
       }
-      
       staff.staff.map(employee => {
         if (employee.id === this.publication.employee) {
           this.employee = employee;

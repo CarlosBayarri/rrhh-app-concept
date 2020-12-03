@@ -1,5 +1,5 @@
 
-<mat-card>
+<mat-card *ngIf="publication?.type !== 'news'">
 
     <mat-card-header>
         <img mat-card-avatar [src]="employee?.image ? employee.image : 'assets/images/avatar.png'" [alt]="employee?.name" height="40" width="40" class="pointer br-50">
@@ -38,9 +38,9 @@
             <button mat-icon-button *ngSwitchCase="'idea'" matTooltip="Idea">
                 <mat-icon>emoji_objects</mat-icon>
             </button>
-            <button mat-icon-button *ngSwitchCase="'news'" matTooltip="News">
+            <!--<button mat-icon-button *ngSwitchCase="'news'" matTooltip="News">
                 <mat-icon>fiber_new</mat-icon>
-            </button>
+            </button>-->
         </div>
         <span class="spacer"></span>
         <span class="mrl-1">{{publication?.likes?.length}}</span>
@@ -51,3 +51,13 @@
     </mat-card-actions>
 
 </mat-card>
+
+
+<div *ngIf="publication?.type === 'news'">
+
+    <mat-card-header>
+        <mat-card-title>{{publication?.info}}</mat-card-title>
+        <mat-card-subtitle>{{publication?.date | fixDate}}</mat-card-subtitle>
+    </mat-card-header>
+
+</div>

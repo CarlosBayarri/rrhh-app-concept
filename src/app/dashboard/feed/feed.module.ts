@@ -7,11 +7,16 @@ import { FeedFormComponent } from './feed-form/feed-form.component';
 import { FeedChildComponent } from './feed-child/feed-child.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FeedBookmarksComponent } from './feed-bookmarks/feed-bookmarks.component';
+import { IsANewPipe } from 'src/app/pipes/is-anew.pipe';
+import { FeedNewsComponent } from './feed-news/feed-news.component';
+import { FixDatePipe } from 'src/app/pipes/fix-date.pipe';
 
 
 
 @NgModule({
-  declarations: [FeedMainComponent, FeedFormComponent, FeedChildComponent, FeedBookmarksComponent],
+  declarations: [FeedMainComponent, FeedFormComponent, FeedChildComponent, FeedBookmarksComponent, 
+    IsANewPipe, FeedNewsComponent, FixDatePipe
+  ],
   imports: [
     CommonModule,
     MaterialModule,
@@ -19,7 +24,10 @@ import { FeedBookmarksComponent } from './feed-bookmarks/feed-bookmarks.componen
     ReactiveFormsModule
   ],
   exports: [
-    FeedMainComponent, FeedChildComponent
+    FeedMainComponent, FeedChildComponent, FeedNewsComponent
+  ],
+  providers: [
+    IsANewPipe
   ]
 })
 export class FeedModule { }

@@ -1,0 +1,22 @@
+
+<div *ngIf="feed_aux.length > 0">
+    <mat-card class="mb-05">
+        <mat-card-header>
+            <mat-icon mat-card-avatar>fiber_new</mat-icon>
+            <mat-card-title>News</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <app-feed-child *ngFor="let publication of feed_aux" [publication]="publication"></app-feed-child>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<mat-card *ngIf="feed_aux.length === 0">
+    <mat-card-header>
+        <mat-icon mat-card-avatar>fiber_new</mat-icon>
+        <mat-card-title>News</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="no-publication-image"></div>
+    </mat-card-content>
+</mat-card>
