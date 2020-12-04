@@ -52,6 +52,12 @@ export class RegisterComponent implements OnInit {
    */
   createUser() {
     if (this.registrationForm.invalid) return;
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Locked'
+    })
+    /*
     this.store.dispatch(actions.isLoading());
     const {name, email, password} = this.registrationForm.value;
     this.authService.createUser(name, email, password).then(response => {
@@ -64,7 +70,7 @@ export class RegisterComponent implements OnInit {
         title: 'Oops...',
         text: err.message
       })
-    })
+    })*/
   }
   /** OnInit life cycle */
   ngOnInit() {

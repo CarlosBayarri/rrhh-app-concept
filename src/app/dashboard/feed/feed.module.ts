@@ -10,12 +10,13 @@ import { FeedBookmarksComponent } from './feed-bookmarks/feed-bookmarks.componen
 import { IsANewPipe } from 'src/app/pipes/is-anew.pipe';
 import { FeedNewsComponent } from './feed-news/feed-news.component';
 import { FixDatePipe } from 'src/app/pipes/fix-date.pipe';
+import { FeedInfoComponent } from './feed-info/feed-info.component';
 
 
 
 @NgModule({
   declarations: [FeedMainComponent, FeedFormComponent, FeedChildComponent, FeedBookmarksComponent, 
-    IsANewPipe, FeedNewsComponent, FixDatePipe
+    IsANewPipe, FeedNewsComponent, FixDatePipe, FeedInfoComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +25,7 @@ import { FixDatePipe } from 'src/app/pipes/fix-date.pipe';
     ReactiveFormsModule
   ],
   exports: [
-    FeedMainComponent, FeedChildComponent, FeedNewsComponent
+    FeedMainComponent, FeedChildComponent, FeedNewsComponent, FeedInfoComponent
   ],
   providers: [
     IsANewPipe

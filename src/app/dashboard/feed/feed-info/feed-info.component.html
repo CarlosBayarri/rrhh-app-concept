@@ -1,0 +1,28 @@
+
+<mat-card class="mb-05 flex-box flex-column">
+    <mat-icon class="margin-auto">star</mat-icon>
+    <mat-card-title class="text-center mtb-1">{{my_likes}} likes</mat-card-title>
+    <mat-list>
+        <div mat-subheader>Publications {{my_feed?.length}}</div>
+        <mat-list-item *ngIf="my_info.post">
+            <mat-icon mat-list-icon>dynamic_feed</mat-icon>
+            <div mat-line>Post {{my_info.post}}</div>
+            <mat-progress-bar color="warn" mat-line mode="determinate" [value]="my_info.post * 100 / my_feed?.length"></mat-progress-bar>
+        </mat-list-item>
+        <mat-list-item *ngIf="my_info.suggestion">
+            <mat-icon mat-list-icon>psychology</mat-icon>
+            <div mat-line>Suggestion {{my_info.suggestion}}</div>
+            <mat-progress-bar color="warn" mat-line mode="determinate" [value]="my_info.suggestion * 100 / my_feed?.length"></mat-progress-bar>
+        </mat-list-item>
+        <mat-list-item *ngIf="my_info.alert">
+            <mat-icon mat-list-icon>notification_important</mat-icon>
+            <div mat-line>Alert {{my_info.alert}}</div>
+            <mat-progress-bar color="warn" mat-line mode="determinate" [value]="my_info.alert * 100 / my_feed?.length"></mat-progress-bar>
+        </mat-list-item>
+        <mat-list-item *ngIf="my_info.idea">
+            <mat-icon mat-list-icon>emoji_objects</mat-icon>
+            <div mat-line>Idea {{my_info.idea}}</div>
+            <mat-progress-bar color="warn" mat-line mode="determinate" [value]="my_info.idea * 100 / my_feed?.length"></mat-progress-bar>
+        </mat-list-item>
+    </mat-list>
+</mat-card>

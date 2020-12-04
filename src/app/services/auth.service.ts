@@ -53,6 +53,7 @@ export class AuthService {
         this.store.dispatch(actions.unSetUser());
         this.store.dispatch(actions.unSetDepartments());
         this.store.dispatch(actions.unSetStaff());
+        this.store.dispatch(actions.unSetFeed());
         this._user = null;
         if (this.userSubscription) this.userSubscription.unsubscribe();
       }
